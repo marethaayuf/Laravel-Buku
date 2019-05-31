@@ -7,4 +7,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    function insert(Request $req)
+    {
+    	$judul = $req->input('judul');
+    	$penerbit = $req->input('penerbit');
+    	$tahun = $req->input('tahun');
+    	$pengarang = $req->input('pengarang');
+    	$data=array('judul'=>$judul,'penerbit'=>$penerbit,'tahun'=>$tahun,'pengarang'=>$pengarang);
+    	DB::table('tabel')->insert($data);
+    }
 }
